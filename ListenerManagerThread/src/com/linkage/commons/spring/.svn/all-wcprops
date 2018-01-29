@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/spring
+END
+ContextHolder.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/spring/ContextHolder.java
+END
+BssPropertiesConfigure.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/spring/BssPropertiesConfigure.java
+END
+SpringBeanInvoker.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/spring/SpringBeanInvoker.java
+END
+ContextHolderListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/spring/ContextHolderListener.java
+END
+BssPropertiesConfigureForSpring1x.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/spring/BssPropertiesConfigureForSpring1x.java
+END
+JamonPerformanceMonitorInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/spring/JamonPerformanceMonitorInterceptor.java
+END

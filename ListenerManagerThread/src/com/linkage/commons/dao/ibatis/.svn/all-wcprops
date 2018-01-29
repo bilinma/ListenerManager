@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/dao/ibatis
+END
+PageLimitSqlExecutor.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/dao/ibatis/PageLimitSqlExecutor.java
+END
+IBatisDaoSupport.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/dao/ibatis/IBatisDaoSupport.java
+END
+BaseDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/dao/ibatis/BaseDAO.java
+END

@@ -1,0 +1,945 @@
+/* ---------------------------------------------------- */
+/* IEWidgets Stylesheet                                 */
+/*                                                      */
+/* Copyright ©2002-2004 Stedy Software and Systems      */
+/* Please see http://www.stedy.com for terms of use.    */
+/* ---------------------------------------------------- */
+
+
+/* ---------------------------------------------------- */
+/* body/bodyDiv styles                                  */
+/* ---------------------------------------------------- */
+body
+{
+	background-color: buttonface;
+	scroll: no;
+	margin: 0px;
+	border: none;
+	overflow: hidden;
+}
+#bodyDiv
+{
+	font: messagebox;
+	color: windowtext;
+	background-color: window;
+	border-top: 2px ridge buttonface;
+	border-left: 2px ridge buttonface;
+	border-bottom: 2px inset window;
+	border-right: 2px inset window;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	z-index: -1;
+}
+.smallest
+{
+    font-family: Verdana, Arial, Helvetica;
+    font-size: 7pt;
+}
+.small
+{
+    font-family: Verdana, Arial, Helvetica;
+    font-size: 8pt;
+}
+.frmObject
+{
+    font-family: Verdana, Arial, Helvetica;
+    font-size: 10pt;
+}
+table.table3d
+{
+    background-color: buttonface;
+    border-top: buttonshadow 1pt solid;
+    border-left: buttonshadow 1pt solid;
+    border-bottom: buttonhighlight 1pt solid;
+    border-right: buttonhighlight 1pt solid;
+}
+
+
+/* ---------------------------------------------------- */
+/* disabled styles                                      */
+/* ---------------------------------------------------- */
+.coolDisabled
+{
+	display: block;
+	background-color: GrayText;
+	filter:	chroma(color=#010101) dropshadow(color=buttonhighlight, offx=1, offy=1);
+	width: 100%;
+}
+.coolDisabled .coolDisabled
+{
+	background-color: transparent;
+	filter:	gray()
+			chroma(color=#ffffff) chroma(color=#fefefe) chroma(color=#fdfdfd)
+			chroma(color=#fcfcfc) chroma(color=#fbfbfb) chroma(color=#fafafa)
+			chroma(color=#f9f9f9) chroma(color=#f8f8f8) chroma(color=#f7f7f7)
+			chroma(color=#f6f6f6) chroma(color=#f5f5f5) chroma(color=#f4f4f4)
+			chroma(color=#f3f3f3) 
+			mask(color=#010101);
+}
+
+
+/* ---------------------------------------------------- */
+/* genericButton                                        */
+/* ---------------------------------------------------- */
+.genericButton
+{
+	behavior: url(../behaviors/genericButton.htc);
+	selectedBackgroundUrl: url(/behaviors/images/tileback.gif);
+	background-color: buttonface;
+	padding: 1px;
+	border: 1px solid buttonface;
+	cursor: hand;
+	font: icon;
+	
+}
+
+
+/* ---------------------------------------------------- */
+/* coolBar                                              */
+/* ---------------------------------------------------- */
+.coolBar
+{
+	behavior: url(../behaviors/coolBar.htc);
+	font: menu;
+	color: menutext;
+	background-color: buttonface;
+	border: none;
+	padding: 0px;
+	cursor: default;
+	overflow: hidden;
+	position: absolute;
+	z-index: 1;
+	filter: flipH() flipH();
+}
+.coolBarHandle
+{
+	border-left: 1px solid buttonhighlight;
+	border-right: 1px solid buttonshadow;
+	border-top: 1px solid buttonhighlight;
+	border-bottom: 1px solid buttonshadow;
+	padding: 0px;
+	margin: 0px;
+	cursor: move;
+	overflow: hidden;
+}
+.posBar
+{
+	background-color: transparent;
+	border: 1px dotted black;
+	padding: 0px;
+	cursor: move;
+	overflow: hidden;
+	position: absolute;
+	z-index: 1;
+	visibility: hidden;
+}
+
+
+/* ---------------------------------------------------- */
+/* coolButton                                           */
+/* ---------------------------------------------------- */
+.coolButton
+{
+	behavior: url(../behaviors/coolButton.htc);
+	coolButtonSelectedBackgroundUrl: url(../behaviors/images/tileback.gif);
+	cursor: hand;
+	font: icon;
+	width: 1px;
+	vertical-align: bottom; 
+	padding-top: 1px;
+	padding-bottom: 3px;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+.coolButton	img
+{
+	vertical-align: middle; 
+	margin-left: 1px;
+	margin-right: 1px;
+}
+.coolButtonDividerH,	
+.coolButtonDividerV		
+{
+	border-top: 1px solid buttonshadow;
+	border-left: 1px solid buttonshadow;
+	border-bottom: 1px solid buttonhighlight;
+	border-right: 1px solid buttonhighlight;
+}
+.coolButtonDividerH		
+{
+	width: 2px;
+	height: 17px;
+	margin-left: 0px;
+	margin-right: 2px;
+}
+.coolButtonDividerV		
+{
+	width: 17px;
+	height: 1px;
+	margin-top: 0px;
+	margin-bottom: 2px;
+}
+
+/* ---------------------------------------------------- */
+/* coolCombo                                            */
+/* ---------------------------------------------------- */
+.coolCombo
+{
+	behavior: url(../behaviors/coolCombo.htc);
+	font: menu;
+	width: 1px;
+	overflow: hidden;
+	border: solid 1px buttonface;
+	padding: 0px;
+	margin-top: 1px; 
+	margin-right: 2px; 
+	vertical-align: top; 
+}
+.coolComboEdit
+{
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+	width: 1px;
+	height: 1px;
+	padding-left: 2px;
+	font: menu;
+	border: solid 1px buttonface;
+	z-index: 1;
+}
+.coolComboButton
+{
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+	cursor: hand;
+	width: 1px;
+	z-index: 2;
+	font-family: webdings;
+	font-size: 6pt;
+	line-height: 6pt;
+	text-align: center;
+	background-color: buttonface;
+	border: solid 1px window;
+}
+.coolComboDropdown
+{
+	position: absolute;
+	height: 1px;
+	width: 1px;
+	font: menu;
+	background-color: window;
+	border: 1px outset buttonshadow;
+	visibility: hidden;
+}
+.coolComboDropdown .coolComboItem
+{
+	margin: 1px;
+	padding-right: 6px;
+	cursor: hand;
+}
+.coolComboDropdown .coolComboItem IMG
+{
+	vertical-align: middle; 
+	margin-left: 1px;
+	margin-right: 6px;
+}
+
+
+/* ---------------------------------------------------- */
+/* cooDatePicker                                        */
+/* ---------------------------------------------------- */
+.coolDatePicker
+{
+	behavior: url(../behaviors/coolDatePicker.htc);	
+	buttonImageUrl: ../behaviors/images/calendar.gif;
+	buttonBackgroundImageUrl: url(../behaviors/images/tileback.gif);
+	prevImageUrl: ../behaviors/images/prev.gif;
+	nextImageUrl: ../behaviors/images/next.gif;
+    font-size: 10pt;
+    font-family: Verdana, Arial, Helvetica;
+	vertical-align: top; 
+    padding: 0px;
+    margin: 0px;
+}
+.coolDatePickerLeftHeader,
+.coolDatePickerCenterHeader,
+.coolDatePickerRightHeader,
+.coolDatePickerDay,
+.coolDatePickerDate
+{
+	background-color: buttonface;
+	border-right: buttonshadow 1px solid;
+	border-top: buttonhighlight 1px solid;
+	border-left: buttonhighlight 1px solid;
+	border-bottom: buttonshadow 1px solid;
+	position: absolute;
+	text-align: center;
+	font: bolder 8pt Verdana;
+	height: 18px;
+	width: 19px;
+}
+.coolDatePickerLeftHeader
+{
+	left: 0px;
+	cursor: hand;
+}
+.coolDatePickerCenterHeader
+{
+	padding-top: 1px;
+	width: 95px;
+	left: 19px;
+	cursor: default;
+}
+.coolDatePickerRightHeader
+{
+	left: 114px;
+	cursor: hand;
+}
+.coolDatePickerDay
+{
+	padding-top: 1px;
+	top: 18px;
+	cursor: default;
+}
+.coolDatePickerDate
+{
+	padding-top: 2px;
+	font: 7.5pt Verdana;
+	cursor: hand;
+}
+
+
+/* ---------------------------------------------------- */
+/* coolGrid                                             */
+/* ---------------------------------------------------- */
+.coolGrid
+{
+	behavior: url(../behaviors/coolGrid.htc);
+	transparentImageUrl: ../behaviors/images/transparent.gif;
+	sortNoneImageUrl: ../behaviors/images/sortBlank.gif;
+	sortUpImageUrl: ../behaviors/images/sortUp.gif;
+	sortDownImageUrl: ../behaviors/images/sortDown.gif;
+	posUpImageUrl: ../behaviors/images/uparrow.gif;
+	posDownImageUrl: ../behaviors/images/downarrow.gif;
+	sortAscImageUrl: ../behaviors/images/sort_ascending.gif;
+	sortDesImageUrl: ../behaviors/images/sort_descending.gif;
+	fieldChooserImageUrl: ../behaviors/images/fieldchooser.gif;
+	table-layout: fixed;
+	position: relative;
+    margin: 0px;
+    width: 100%;
+ 	font: menu;
+	highlightBackgroundColor: #C1D2EE;
+	highlightBorderColor: #316AC5;
+	color: windowtext;
+    cursor: default;
+}
+.coolGrid THEAD TD
+{
+	border-left: 1px solid buttonhighlight;
+	border-top: 1px solid buttonhighlight;
+	border-bottom: 1px solid buttonshadow;
+	border-right: 1px solid buttonshadow;
+	font: menu;
+	color: menutext;
+	background-color: buttonface;
+    cursor: hand;
+    padding-top: 0px;
+    padding-bottom: 1px;
+}
+.coolGrid TBODY TR
+{
+	color: windowtext;
+	background: window;
+}
+
+
+/* ---------------------------------------------------- */
+/* coolLookup                                           */
+/* ---------------------------------------------------- */
+.coolLookup
+{
+	behavior: url(../behaviors/coolLookup.htc);	
+	buttonImageUrl: ../behaviors/images/lookup.gif;
+	buttonBackgroundImageUrl: url(../behaviors/images/tileback.gif);
+    font-size: 10pt;
+    font-family: Verdana, Arial, Helvetica;
+	vertical-align: top; 
+    padding: 0px;
+    margin: 0px;
+}
+
+
+/* ---------------------------------------------------- */
+/* coolMask                                             */
+/* ---------------------------------------------------- */
+.coolMask
+{
+	behavior: url(../behaviors/coolMask.htc);
+    font-size: 10pt;
+    font-family: Verdana, Arial, Helvetica
+}
+.coolMaskNoBevel
+{
+	behavior: url(../behaviors/coolMask.htc);
+    font: menu;
+    border: 1px solid buttonshadow;
+	padding: 2px;
+    height: 19px;
+}
+
+
+/* ---------------------------------------------------- */
+/* coolMenu                                             */
+/* ---------------------------------------------------- */
+.coolMenuRoot
+{
+	behavior: url(../behaviors/coolMenuRoot.htc);
+	background-color: buttonface;
+	border: 1px solid buttonface;
+	cursor: hand;
+	font: menu;
+	width: 1px;
+	vertical-align: bottom; 
+	padding-top: 2px;
+	padding-bottom: 3px;
+	padding-left: 7px;
+	padding-right: 7px;
+	text-align: center;
+}
+.coolMenu
+{
+	behavior: url(../behaviors/coolMenu.htc);
+	position: absolute;
+	height: 1px;
+	width: 1px;
+	font: menu;
+	background-color: menu;
+	border-top: 2px outset buttonhighlight;
+	border-left: 2px outset buttonhighlight;
+	border-bottom: 1px solid buttonshadow;
+	border-right: 1px solid buttonshadow;
+	visibility: hidden;
+}
+.coolMenu .coolMenuItem
+{
+	behavior: url(../behaviors/coolMenuItem.htc);
+	height: 20px;
+	margin: 1px;
+	padding-right: 25px;
+	cursor: hand;
+}
+.coolMenu .coolMenuItem	IMG
+{
+	vertical-align: middle; 
+	margin-left: 1px;
+	margin-right: 6px;
+}
+.coolMenu .coolMenuItem .coolMenuMore
+{
+	font-family: webdings;
+}
+.coolMenu .coolMenuDivider
+{
+	border: 1px inset;
+	border-top-color: buttonshadow;
+	border-bottom-color: buttonhighlight;
+	height: 2px;
+	overflow: hidden;
+	margin-left: 2px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+
+/* ---------------------------------------------------- */
+/* coolOLBar                                            */
+/* ---------------------------------------------------- */
+.coolOLBar
+{
+	behavior: url(../behaviors/coolOLBar.htc);
+	font: menu;
+	color: menutext;
+	background-color: buttonface;
+    cursor: default;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: 0px;
+    padding: 0px;
+}
+.coolOLBarContainer
+{
+    background-color: buttonface;
+    position: absolute;
+	top: 0px
+	left: 0px;
+    overflow: hidden;
+}
+.coolOLBarButtonContainer
+{
+    width: 100%;
+    position: absolute;
+	top: 0px;
+	left: 0px;
+    overflow: hidden;
+    z-index: -1;
+}
+.coolOLBarContainerButton
+{
+    width: 100%;
+	text-align: center;
+    background-color: buttonface;
+	border-left: 1px solid buttonhighlight;
+	border-right: 1px solid buttonshadow;
+	border-top: 1px solid buttonhighlight;
+	border-bottom: 1px solid buttonshadow;
+    padding: 0px; 
+    cursor: hand; 
+}
+.coolOLBarContainerButtonText
+{
+	border: 1px solid buttonface;
+    padding-left: 2px; 
+    padding-right: 2px; 
+    padding-top: 2px;
+    padding-bottom: 3px;
+    height: 100%;
+    width: 100%;
+}
+.coolOLBarButton
+{
+    width: 100%;
+	text-align: center;
+    background-color: buttonface;
+}
+.coolOLBarButton IMG
+{
+    margin-top: 4px;
+    margin-bottom: 2px;
+    background-color: buttonface;
+	border: solid 1px buttonface;
+	padding: 4px;
+    cursor: hand;
+}
+.coolOLBarScrollButton
+{
+    position: absolute;
+    overflow: hidden;
+    width: 14px;
+    height: 14px;
+    color: buttontext;
+    background-color: buttonface;
+    font-family: webdings;
+    line-height: 10px;
+    font-size: 10px;
+	text-align: center;
+	padding: 0px;
+    cursor: hand;
+    visibility: visible;
+    z-index: 2;
+}
+
+
+/* ---------------------------------------------------- */
+/* coolSelect                                           */
+/* ---------------------------------------------------- */
+.coolSelect
+{
+	behavior: url(../behaviors/coolSelect.htc);	
+    font-family: Verdana, Arial, Helvetica;
+    font-size: 10pt;
+	background-color: window;
+    border: 1px solid buttonshadow;
+	padding: 2px;
+	padding-left: 4px;
+	margin: 0px;
+	cursor: default;
+}
+.coolSelectDropdown
+{
+	position: absolute;
+	height: 1px;
+	width: 1px;
+	background-color: window;
+	border: 1px solid buttonshadow;
+	visibility: hidden;
+}
+.coolSelectDropdown .coolSelectItem
+{
+	margin: 1px;
+	padding-right: 6px;
+	cursor: hand;
+}
+.coolSelectDropdown .coolSelectItem IMG
+{
+	vertical-align: middle; 
+	margin-left: 1px;
+	margin-right: 6px;
+}
+
+
+/* ---------------------------------------------------- */
+/* coolTable                                            */
+/* ---------------------------------------------------- */
+.coolTable
+{
+	behavior: url(../behaviors/coolTable.htc);
+	sortNoneImageUrl: ../behaviors/images/sortBlank.gif;
+	sortUpImageUrl: ../behaviors/images/sortUp.gif;
+	sortDownImageUrl: ../behaviors/images/sortDown.gif;
+	posUpImageUrl: ../behaviors/images/uparrow.gif;
+	posDownImageUrl: ../behaviors/images/downarrow.gif;
+	position: relative;
+    margin: 0px;
+    width: 100%;
+ 	font: menu;
+	highlightBackgroundColor: #C1D2EE;
+	highlightBorderColor: #316AC5;
+	color: windowtext;
+    cursor: default;
+}
+.coolTable THEAD TD
+{
+	border-left: 1px solid buttonhighlight;
+	border-top: 1px solid buttonhighlight;
+	border-bottom: 1px solid buttonshadow;
+	border-right: 1px solid buttonshadow;
+	font: menu;
+	color: menutext;
+	background-color: buttonface;
+    cursor: hand;
+    padding-top: 0px;
+    padding-bottom: 1px;
+}
+.coolTable TBODY TR
+{
+	color: windowtext;
+	background: window;
+}
+
+
+/* ---------------------------------------------------- */
+/* coolTree                                             */
+/* ---------------------------------------------------- */
+.coolTree
+{
+	behavior: url(../behaviors/coolTree.htc);
+	childNodeImageUrl: ../behaviors/images/transparent.gif;
+	parentNodeCollapsedImageUrl: ../behaviors/images/collapsed.gif;
+	parentNodeExpandedImageUrl: ../behaviors/images/expanded.gif;
+	defaultParentImageUrl: ../behaviors/images/folderIcon.gif;
+	defaultChildImageUrl: ../behaviors/images/htmlIcon.gif;
+	display: list-item; 
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	font: menu;
+	color: menutext;
+	background-color: window;
+	border: 2px inset window;
+	cursor: default;
+	overflow: auto;
+	width: 0px;
+	height: 0px;
+}
+.coolTree LI
+{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	height: 0px;
+	width: 0px;
+	left: 0px;
+}
+.coolTree .icon
+{
+	cursor: arrow;
+	margin: 0px;
+	padding: 0px;
+}
+.coolTree .pict
+{
+	cursor: default;
+	margin: 0px;
+	padding: 0px;
+}
+.coolTree LI UL
+{
+	list-style-type: none;
+	margin: 0px;
+	margin-left: 16px;
+	padding: 0px;
+	display: none;
+	width: 0px;
+	left: 0px;
+}
+.coolTree LI A
+{
+	color: windowtext;
+	text-decoration: none;
+	margin: 0px;
+	padding-left: 3px;
+	padding-right: 1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	position: relative;
+	top: -4px;
+	left: 2px;
+}
+.coolTree LI A.clsMouseOver
+{
+	color: blue;
+	text-decoration: underline;
+	background-color: window;
+}
+.coolTree LI A.clsMouseDown
+{
+	color: highlighttext;
+	text-decoration: underline;
+	background-color: highlight;
+}
+.coolTree LI A.clsCurrentHasFocus
+{
+	color: highlighttext;
+	text-decoration: none;
+	background-color: highlight;
+}
+
+
+/* ---------------------------------------------------- */
+/* coolUltraGrid                                        */
+/* ---------------------------------------------------- */
+.coolUltraGrid
+{
+	behavior: url(../behaviors/coolUltraGrid.htc);
+	transparentImageUrl: ../behaviors/images/transparent.gif;
+	sortNoneImageUrl: ../behaviors/images/sortBlank.gif;
+	sortUpImageUrl: ../behaviors/images/sortUp.gif;
+	sortDownImageUrl: ../behaviors/images/sortDown.gif;
+	posUpImageUrl: ../behaviors/images/uparrow.gif;
+	posDownImageUrl: ../behaviors/images/downarrow.gif;
+	sortAscImageUrl: ../behaviors/images/sort_ascending.gif;
+	sortDesImageUrl: ../behaviors/images/sort_descending.gif;
+	editImageUrl: ../behaviors/images/edit.gif;
+	addRowImageUrl: ../behaviors/images/addRow.gif;
+	delRowImageUrl: ../behaviors/images/deleteRow.gif;
+	delRowsImageUrl: ../behaviors/images/deleteRows.gif;
+	fieldChooserImageUrl: ../behaviors/images/fieldchooser.gif;
+	background-color: window;
+	color: menutext;
+ 	font: menu;
+	highlightBackgroundColor: #C1D2EE;
+	highlightBorderColor: #316AC5;
+    cursor: default;
+    overflow: hidden;
+}
+.coolUltraGrid .gridHead
+{
+	background-color: buttonface;
+	height: 0px;
+	width: 0px;
+	visibility: hidden;
+}
+.coolUltraGrid .gridHead .gridRow
+{
+	height: 0px;
+	width: 0px;
+	cursor: hand;
+}
+.coolUltraGrid .gridHead .gridRow SPAN
+{
+	border-top: buttonhighlight 1px solid;
+	border-left: buttonhighlight 1px solid;
+	border-bottom: buttonshadow 1px solid;
+	border-right: buttonshadow 1px solid;
+	background-color: transparent;
+	text-align: left;
+	height: 0px;
+	width: 0px;
+	padding-top: 1px;
+	padding-left: 2px;
+	padding-bottom: 2px;
+	padding-right: 2px;
+	cursor: hand;
+}
+.coolUltraGrid .gridBody
+{
+	background-color: buttonface;
+	visibility: hidden;
+    overflow: auto;
+}
+.coolUltraGrid .gridBody .gridRow
+{
+	background-color: window;
+	border: 1px solid window;
+	height: 0px;
+	width: 0px;
+}
+.coolUltraGrid .gridBody .gridRow SPAN
+{
+	background-color: transparent;
+	text-align: left;
+	height: 0px;
+	width: 0px;
+	padding-top: 1px;
+	padding-left: 2px;
+	padding-bottom: 2px;
+	padding-right: 2px;
+    overflow: hidden;
+}
+
+
+/* ---------------------------------------------------- */
+/* coolWindowEX                                         */
+/* ---------------------------------------------------- */
+.coolWindowEx
+{
+ 	behavior: url(../behaviors/coolWindowEx.htc);
+	transparentImageUrl: ../behaviors/images/transparent.gif;
+	restoreImageUrl: ../behaviors/images/restore.gif;
+	minimizeImageUrl: ../behaviors/images/minimize.gif;
+	maximizeImageUrl: ../behaviors/images/maximize.gif;
+	closeImageUrl: ../behaviors/images/close.gif;
+	position: absolute;
+	border: outset 2px window;
+	background-color: buttonface;
+	overflow: hidden;
+	cursor: default;
+}
+.coolWindowEx .windowCaption
+{
+	background-color: activecaption;
+	padding-top: 2px;
+	padding-bottom: 3px;
+	padding-left: 4px;
+	padding-right: 2px;
+	margin: 2px;
+	width: 100%;
+	overflow: hidden;
+	color: captiontext;
+	font: caption;
+	cursor: default;
+	filter: Alpha(Opacity=100, FinishOpacity=0, Style=1, StartX=0, StartY=0, FinishX=100, FinishY=0);
+}
+.coolWindowEx .captionButton
+{
+	position: absolute;
+	top: 4px;
+	border-left: 1px solid buttonhighlight;
+	border-top: 1px solid buttonhighlight;
+	border-bottom: 1px solid threeddarkshadow;
+	border-right: 1px solid threeddarkshadow;
+	background-color: buttonface;
+	cursor: default;
+}
+.coolWindowEx .captionImage
+{
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	cursor: default;
+}
+.coolWindowEx .captionButton IMG
+{
+	border-bottom: 1px solid buttonshadow;
+	border-right: 1px solid buttonshadow;
+	cursor: default;
+}
+.coolWindowEx .windowContent
+{
+	background-color: window;
+	color: windowtext;
+	font: window;
+	padding: 0px;
+	margin-top: 0px;
+	margin-left: 2px;
+	margin-right: 3px;
+	margin-bottom: 3px;
+	width: 0px;
+	height: 0px;
+}
+
+
+/* ---------------------------------------------------- */
+/* coolWindows                                          */
+/* ---------------------------------------------------- */
+.coolWindows
+{
+ 	behavior: url(../behaviors/coolWindows.htc);
+	defaultImageUrl: ../behaviors/images/ie.gif;
+	minimizeImageUrl: ../behaviors/images/minimize.gif;
+	maximizeImageUrl: ../behaviors/images/maximize.gif;
+	closeImageUrl: ../behaviors/images/close.gif;
+	display: none;
+}
+.coolWindow
+{
+ 	behavior: url(../behaviors/coolWindow.htc);
+	transparentImageUrl: ../behaviors/images/transparent.gif;
+	restoreImageUrl: ../behaviors/images/restore.gif;
+	minimizeImageUrl: ../behaviors/images/minimize.gif;
+	maximizeImageUrl: ../behaviors/images/maximize.gif;
+	closeImageUrl: ../behaviors/images/close.gif;
+	position: absolute;
+	border: outset 2px window;
+	background-color: buttonface;
+	overflow: hidden;
+	visibility: hidden;
+	cursor: default;
+}
+.coolWindow .windowCaption
+{
+	background-color: activecaption;
+	padding-top: 2px;
+	padding-bottom: 3px;
+	padding-left: 4px;
+	padding-right: 2px;
+	margin: 2px;
+	width: 100%;
+	overflow: hidden;
+	color: captiontext;
+	font: caption;
+	cursor: default;
+	filter: Alpha(Opacity=100, FinishOpacity=0, Style=1, StartX=0, StartY=0, FinishX=100, FinishY=0);
+}
+.coolWindow .captionImage
+{
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	cursor: default;
+}
+.coolWindow .captionButton
+{
+	position: absolute;
+	top: 4px;
+	border-left: 1px solid buttonhighlight;
+	border-top: 1px solid buttonhighlight;
+	border-bottom: 1px solid threeddarkshadow;
+	border-right: 1px solid threeddarkshadow;
+	background-color: buttonface;
+	cursor: default;
+}
+.coolWindow .captionButton IMG
+{
+	border-bottom: 1px solid buttonshadow;
+	border-right: 1px solid buttonshadow;
+	cursor: default;
+}
+.coolWindow .windowContent
+{
+	background-color: window;
+	color: windowtext;
+	font: window;
+	padding: 0px;
+	margin-top: 0px;
+	margin-left: 2px;
+	margin-right: 3px;
+	margin-bottom: 3px;
+	width: 0px;
+	height: 0px;
+}

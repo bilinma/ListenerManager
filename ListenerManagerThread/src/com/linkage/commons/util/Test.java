@@ -1,0 +1,25 @@
+package com.linkage.commons.util;
+
+public class Test {
+
+    public static final int COMPRESS_STRIP_SL_COMMENTS = 1 << 0;
+    public static final int COMPRESS_STRIP_ML_COMMENTS = 1 << 1;
+    public static final int COMPRESS_TRIM_LINES = 1 << 2;
+    public static final int COMPRESS_STRIP_BLANKLINES = 1 << 3;
+    public static final int COMPRESS_SHRINK_VARS = 1 << 4;
+    public static final int COMPRESS_REMOVE_NEWLINES = 1 << 5;
+    public static final int LEVEL_NONE = 0;
+    public static final int LEVEL_DEBUGGABLE = COMPRESS_STRIP_SL_COMMENTS | COMPRESS_STRIP_ML_COMMENTS | COMPRESS_TRIM_LINES;
+    public static final int LEVEL_NORMAL = LEVEL_DEBUGGABLE | COMPRESS_STRIP_BLANKLINES | COMPRESS_SHRINK_VARS;
+    public static final int LEVEL_ULTRA = LEVEL_NORMAL | COMPRESS_REMOVE_NEWLINES;
+	public static void main(String[] args) {
+		System.out.println("debug:"+LEVEL_DEBUGGABLE);
+		System.out.println("ml:"+COMPRESS_STRIP_ML_COMMENTS);
+		System.out.println("ml:"+LEVEL_NORMAL);
+		System.out.println("ml:"+LEVEL_ULTRA);
+		long end = System.currentTimeMillis();
+		System.out.println("date : " + DateUtil.longToDateString(end, "yyyy-MM-dd HH:mm:ss.SSS"));
+		System.out.println("date : " + DateUtil.longToDateString(end, "yyyyMMddHHmmss.S"));
+	}
+
+}

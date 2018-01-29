@@ -1,0 +1,179 @@
+package com.linkage.commons.exception;
+
+import java.io.PrintStream;
+import java.io.PrintWriter;
+
+import com.linkage.commons.util.ExceptionUtil;
+
+/**
+ * BSS 的check异常抽象类, 所有的BSS CHECK检查异常都继承这个父类
+
+ * @author zhaoxin
+ *
+ */
+public class BssCheckedException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7698665227494141616L;
+	private Result result;
+
+	/**
+	 * 构造方法
+
+	 * @param result 返回值
+
+	 * @param cause  异常堆栈
+	 */
+	public BssCheckedException(Result result, Throwable cause) {
+		super(result.getMsg(), cause);
+		this.result = result;
+	}
+
+	/**
+	 * 构造方法
+
+	 * @param code 返回码
+
+	 * @param msg  错误消息
+	 */
+	public BssCheckedException(int code, String msg) {
+		super(msg);
+		this.result = new Result(code, msg);
+	}
+
+	/**
+	 * 构造方法
+
+	 * @param result 返回值
+
+	 * @param detail 具体的返回消息
+
+	 */
+	public BssCheckedException(Result result, String detail) {
+		super(result.getMsg() + "," + detail);
+		this.result = new Result(result.getCode(), result.getMsg() + "," + detail);
+	}
+
+	/**
+	 * 构造方法
+
+	 * @param result 返回值
+
+	 * @param detail 具体的返回消息
+
+	 * @param cause  异常堆栈
+	 */
+	public BssCheckedException(Result result, String detail, Throwable cause) {
+		super(result.getMsg() + "," + detail, cause);
+		this.result = new Result(result.getCode(), result.getMsg() + "," + detail);
+	}
+
+	/**
+	 * 构造方法
+
+	 * @param code	返回码
+
+	 * @param msg	返回消息
+	 * @param cause 异常堆栈
+	 */
+	public BssCheckedException(int code, String msg, Throwable cause) {
+		super(msg, cause);
+		this.result = new Result(code, msg);
+	}
+
+	/**
+	 * 构造方法
+
+	 * @param code	返回码
+
+	 * @param cause	异常堆栈
+	 */
+	public BssCheckedException(int code, Throwable cause) {
+		super(cause);
+		this.result = new Result(code, null);
+	}
+
+	/**
+	 * 返回异常消息
+	 * @return 异常消息
+	 */
+	@Override
+	public String getMessage() {
+		return ExceptionUtil.buildMessage(super.getMessage(), getCause());
+	}
+	/**
+	 * 异常
+	 * @return
+	 */
+	public String toXmlString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<exception>");
+		
+		if (getResult() != null)
+			sb.append(result.toString());
+
+		sb.append("<exceptionTrace>");
+		sb.append(getMessage());
+		sb.append("</exceptionTrace>");
+		
+		sb.append("<exception/>");
+		return sb.toString();
+	}
+
+	@Override
+	public void printStackTrace(PrintStream ps) {
+		ps.print("<exception>");
+		if (getResult() != null) {
+			ps.print(result.toString());
+		} 
+		ps.append("<exceptionTrace>");
+		
+		Throwable cause = getCause();
+		if (cause == null) {
+			super.printStackTrace(ps);
+		} else {
+			ps.println(this);
+			ps.print("Caused by: ");
+			cause.printStackTrace(ps);
+		}
+		ps.append("</exceptionTrace>");
+		ps.println("</exception>");
+	}
+
+	@Override
+	public void printStackTrace(PrintWriter pw) {
+		pw.print("<exception>");
+		if (getResult() != null) {
+			pw.print(result.toString());
+		} 
+		pw.append("<exceptionTrace>");
+		
+		Throwable cause = getCause();
+		if (cause == null) {
+			super.printStackTrace(pw);
+		} else {
+			pw.println(this);
+			pw.print("Caused by: ");
+			cause.printStackTrace(pw);
+		}
+		pw.append("</exceptionTrace>");
+		pw.println("</exception>");
+	}
+
+	/**
+	 * 返回异常值
+
+	 * @return	异常值对象
+
+	 */
+	public Result getResult() {
+		return result;
+	}
+
+	public void setResult(Result result) {
+		this.result = result;
+	}
+
+}

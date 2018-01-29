@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ListenerManagerWeb">
+        <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/configs"/>
+        <dependent-module archiveName="ListenerManagerThread.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ListenerManagerThread/ListenerManagerThread">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="bssCommons.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bssCommons/bssCommons">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="/ListenerManagerWeb"/>
+        <property name="java-output-path" value="/ListenerManagerWeb/WebRoot/WEB-INF/classes"/>
+        <property name="me-merge-utility-modules" value="true"/>
+    </wb-module>
+</project-modules>

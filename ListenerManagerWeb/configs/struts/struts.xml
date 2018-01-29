@@ -1,0 +1,24 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<include file="struts-default.xml" />
+	<package name="orderManager" extends="struts-default">
+		<global-results>
+			<result name="otherError">
+				/common/error.jsp
+	        </result>
+			<result name="ourError">
+				/common/ourError.jsp        
+	        </result>	        
+		</global-results>
+		<!-- 全局的异常配置 -->
+		<global-exception-mappings>
+		    <exception-mapping result="ourError" exception="com.linkage.commons.exception.BssRuntimeException"/>
+			<exception-mapping result="otherError" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+		
+		<action name="listenerConsole" class="com.linkage.listener.web.ListenerConsoleAction"/>
+		<action name="listenerConfig" class="com.linkage.listener.web.ListenerConfigAction"/>
+	</package>
+</struts>

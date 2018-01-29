@@ -1,0 +1,121 @@
+package com.linkage.commons.dao.jdbc;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcOperations;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.util.Assert;
+
+import com.linkage.commons.dao.Page;
+import com.linkage.commons.dao.support.OracleDialect;
+import com.linkage.commons.util.Log;
+
+/**
+ * jdbc的分页封装类,内部使用了spring的jdbcTemplate
+ * 使用方法:
+ *   JdbcPageTemplate jdbcPageTemplate = new JdbcPageTemplate(jdbcTemplate);
+ *   List<Map<String, Object>> list = queryForPageList(sql, page);
+ *   System.out.println("list.size:" + list.size();
+ * @author zhaoxin
+ *
+ */
+public class JdbcPageTemplate {
+	protected final static Log logger = Log.getLog(JdbcPageTemplate.class);
+	/**
+	 * The JdbcTemplate we are wrapping
+	 */
+	private final JdbcOperations classicJdbcTemplate;
+
+	/**
+	 * Create a new JdbcPageTemplate for the given {@link DataSource}.
+	 * <p>Creates a classic Spring {@link org.springframework.jdbc.core.JdbcTemplate} and wraps it.
+	 * @param dataSource the JDBC DataSource to access
+	 */
+	public JdbcPageTemplate(DataSource dataSource) {
+		Assert.notNull(dataSource, "The [dataSource] argument cannot be null.");
+		this.classicJdbcTemplate = new JdbcTemplate(dataSource);
+	}
+
+	/**
+	 * Create a new JdbcPageTemplate for the given classic
+	 * Spring {@link org.springframework.jdbc.core.JdbcTemplate}.
+	 * @param classicJdbcTemplate the classic Spring JdbcTemplate to wrap
+	 */
+	public JdbcPageTemplate(JdbcOperations classicJdbcTemplate) {
+		Assert.notNull(classicJdbcTemplate, "The [classicJdbcTemplate] argument cannot be null.");
+		this.classicJdbcTemplate = classicJdbcTemplate;
+	}
+
+	/**
+	 * Expose the classic Spring JdbcTemplate to allow invocation of
+	 * less commonly used methods.
+	 */
+	public JdbcOperations getJdbcOperations() {
+		return this.classicJdbcTemplate;
+	}
+
+	/**
+	 * 分页方法
+	 * @param statementName
+	 * @param page
+	 * @return
+	 */
+	public List<Map<String, Object>> queryForPageList(String sql, Page page) throws DataAccessException{
+		int index = (page.getCurPage() - 1) * page.getPageSize();
+		int size = page.getPageSize();
+		return queryForPageList(sql, index, size);
+	}
+	/**
+	 * 分页方法
+	 * @param sql
+	 * @param index 起始记录数
+	 * @param size	每页记录数
+	 * @return
+	 */
+	public List<Map<String, Object>> queryForPageList(String sql, int index, int size)throws DataAccessException {
+		String pageSql = OracleDialect.getLimitString(sql, true);
+		return getJdbcOperations().queryForList(pageSql, new Object[] { index+size, index });
+	}
+
+	/**
+	 * 带参数的分页方法
+	 * @param sql
+	 * @param page
+	 * @param params
+	 * @return
+	 */
+	public List<Map<String, Object>> queryForPageList(String sql, Page page, Object[] params)throws DataAccessException {
+		int index = (page.getCurPage() - 1) * page.getPageSize();
+		int size = page.getPageSize();
+		return queryForPageList(sql, index, size, params);
+	}
+	/**
+	 * 带参数的分页方法
+	 * @param sql	sql语句
+	 * @param index	起始记录
+	 * @param size	每页记录数
+	 * @param params	sql可变参数
+	 * @return
+	 */
+	public List<Map<String, Object>> queryForPageList(String sql, int index, int size, Object[] params) throws DataAccessException{
+
+		String pageSql = OracleDialect.getLimitString(sql, true);
+
+		//把rownum也当作绑定参数而不是动态SQL拼接，提高性能
+		int length = 2;
+		if (params != null && params.length > 0)
+			length += params.length;
+
+		Object[] args = new Object[length];
+		if (params != null && params.length > 0)
+			System.arraycopy(params, 0, args, 0, params.length);
+		args[length - 2] = index + size;
+		args[length - 1] = index;
+
+		return getJdbcOperations().queryForList(pageSql, args);
+	}
+}

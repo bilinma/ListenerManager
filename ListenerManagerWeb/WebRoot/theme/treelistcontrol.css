@@ -1,0 +1,137 @@
+body{
+	background-color: buttonface;
+}
+.tlcOuterDiv {
+	border-bottom: 1px solid threedlightshadow;
+	border-right: 1px solid threedlightshadow;
+	border-top: 1px solid threeddarkshadow;
+	border-left: 1px solid threeddarkshadow;
+	width: 100%;
+	position: relative;
+	overflow-x: auto;
+	overflow-y: hidden;
+	background-color: white;
+}
+
+.tlcMainTable {
+}
+
+.tlcHeaderLabel {
+	font-family: tahoma, verdana;
+	font-size:8pt;
+	background-color:buttonface;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:1px;
+	border-top:1px solid buttonhighlight;
+	border-left:1px solid buttonhighlight;
+	border-right:1px solid buttonshadow;
+	border-bottom:1px solid buttonshadow;
+	width:100%;
+	height:100%;
+	cursor:default;
+	position:relative;
+	overflow-x:hidden;
+	white-space: nowrap;
+}
+
+.tlcHeaderCell {
+	background-color:black;
+	padding:1px;
+	padding-left:0px;
+	vertical-align:top;
+}
+
+.tlcRow {
+	font-family: tahoma, verdana;
+	font-size:8pt;
+	position:relative;
+	overflow-x:hidden;
+	padding-left:2px;
+	padding-left:2px;
+}
+
+.tlcRowDiv {
+	font-family: tahoma, verdana;
+	font-size:8pt;
+	padding-right:2px;
+	position:relative;
+	background-color:white;
+	overflow-x:hidden;
+	padding-bottom:16px;
+}
+
+.tlcRowDivClipped {
+	font-family: tahoma, verdana;
+	font-size:8pt;
+	padding:0px;
+	position:relative;
+	overflow-x:hidden;
+	padding-bottom:16px;
+	border-right: 1px solid white;
+	background-color:white;
+	filter:progid:DXImageTransform.Microsoft.Shadow(direction=90,color=#CCCCCC,strength=3);
+}
+
+.tlcNodeChildren {
+	margin:0px;
+	vertical-align: middle;
+	position: relative;
+	overflow: hidden;
+}
+
+.tlcNodeLabel {
+	padding: 0px;
+	overflow: hidden;
+	position: relative;
+	white-space: nowrap;
+	height:16px;
+	vertical-align: top;
+}
+
+.tlcNodeLabelSelected {
+	padding: 0px;
+	overflow: hidden;
+	position: relative;
+	white-space: nowrap;
+	height:16px;
+	vertical-align: top;
+	color:white;
+	background-color: darkblue;
+}
+
+.tlcNodeLabelText {
+	margin-left: 4px;
+	height:16px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.tlcNodeLabelTextHovering {
+	margin-left: 4px;
+	background-color: #CCCCFF;
+	height:16px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.tlcNode {
+	padding: 0px;
+	margin: 0px;
+	vertical-align: middle;
+	overflow: hidden;
+	position: relative;
+}
+
+.tlcColumnDivider {
+	font-size:6pt;
+	position: absolute;
+	width:17px;
+	height:16px;
+	cursor:move;
+	border:1px solid red;
+	background-color:yellow;
+	z-index:100;
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+	pixelLeft:expression(tlcRelocateDivider(this));
+}

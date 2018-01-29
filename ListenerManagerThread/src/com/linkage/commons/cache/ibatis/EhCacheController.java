@@ -1,0 +1,145 @@
+package com.linkage.commons.cache.ibatis;
+
+import java.util.Properties;
+
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Ehcache;
+import net.sf.ehcache.Element;
+import net.sf.ehcache.store.MemoryStoreEvictionPolicy;
+
+import com.ibatis.sqlmap.engine.cache.CacheController;
+import com.ibatis.sqlmap.engine.cache.CacheModel;
+import com.linkage.commons.dao.DBUtil;
+import com.linkage.commons.util.StringUtil;
+
+/**
+ * ibatis 的ehcache缓存插件
+ * @author zhaoxin
+ *
+ */
+public class EhCacheController implements CacheController {
+
+	/** The EhCache CacheManager. */
+	private CacheManager cacheManager;
+
+	/**
+	 * Flush a cache model.
+	 * @param cacheModel - the model to flush.
+	 */
+	public void flush(CacheModel cacheModel) {
+		getCache(cacheModel).removeAll();
+	}
+
+	/**
+	 * Get an object from a cache model.
+	 * @param cacheModel - the model.
+	 * @param key        - the key to the object.
+	 * @return the object if in the cache, or null(?).
+	 */
+	public Object getObject(CacheModel cacheModel, Object key) {
+		Object result = null;
+		Element element = getCache(cacheModel).get(getKey(key));
+		
+		if (element != null) {
+			result = element.getObjectValue();
+		}
+		return result;
+
+	}
+
+	/**
+	 * Put an object into a cache model.
+	 * @param cacheModel - the model to add the object to.
+	 * @param key        - the key to the object.
+	 * @param object     - the object to add.
+	 */
+	public void putObject(CacheModel cacheModel, Object key, Object object) {
+		getCache(cacheModel).put(new Element(getKey(key), object));
+	}
+
+	/**
+	 * Remove an object from a cache model.
+	 * @param cacheModel - the model to remove the object from.
+	 * @param key        - the key to the object.
+	 * @return the removed object(?).
+	 */
+	public Object removeObject(CacheModel cacheModel, Object key) {
+		Object result = this.getObject(cacheModel, getKey(key));
+		getCache(cacheModel).remove(getKey(key));
+		return result;
+	}
+
+	/**
+	 * Configure a cache controller. Initialize the EH Cache Manager as a singleton.
+	 * @param props - the properties object continaing configuration information.
+	 */
+	public void setProperties(Properties props) {
+		//        URL url = getClass().getResource(	);
+		//        cacheManager = CacheManager.create(url);
+		if (cacheManager == null)
+			cacheManager = CacheManager.create();
+
+		String cacheName = props.getProperty("name");
+		if(StringUtil.isEmpty(cacheName)){
+			throw new RuntimeException("必须指定一个cache的名称,而且名称格式必须为[namespace.cacheModelName]");
+		}
+		int maxElementsInMemory = (props.getProperty("maxElementsInMemory") == null ? 10000 : Integer.valueOf(props
+				.getProperty("maxElementsInMemory")));
+		int maxElementsOnDisk = (props.getProperty("maxElementsOnDisk") == null ? 10000000 : Integer.valueOf(props
+				.getProperty("maxElementsOnDisk")));
+		boolean overflowToDisk = (props.getProperty("overflowToDisk") == null ? false : Boolean.parseBoolean(props
+				.getProperty("maxElementsOnDisk")));
+		boolean eternal = (props.getProperty("eternal") == null ? false : Boolean.parseBoolean(props
+				.getProperty("eternal")));
+		int timeToLive = (props.getProperty("timeToLiveSeconds") == null ? 120 : Integer.valueOf(props
+				.getProperty("timeToLiveSeconds")));
+		int timeToIdle = (props.getProperty("timeToIdleSeconds") == null ? 120 : Integer.valueOf(props
+				.getProperty("timeToIdleSeconds")));
+		boolean diskPersistent = (props.getProperty("diskPersistent") == null ? false : Boolean.parseBoolean(props
+				.getProperty("diskPersistent")));
+		;
+		int diskExpiryThreadIntervalSeconds = (props.getProperty("diskExpiryThreadIntervalSeconds") == null ? 120
+				: Integer.valueOf(props.getProperty("diskExpiryThreadIntervalSeconds")));
+
+		if (!this.cacheManager.cacheExists(cacheName)) {
+
+			Ehcache rawCache = new Cache(cacheName, maxElementsInMemory, MemoryStoreEvictionPolicy.LRU, overflowToDisk,
+					null, eternal, timeToLive, timeToIdle, diskPersistent, diskExpiryThreadIntervalSeconds, null, null,
+					maxElementsOnDisk);
+			this.cacheManager.addCache(rawCache);
+		}
+	}
+
+	/**
+	 * Gets an EH Cache based on an iBatis cache Model.
+	 * @param cacheModel - the cache model.
+	 * @return the EH Cache.
+	 */
+	private Cache getCache(CacheModel cacheModel) {
+		String cacheName = cacheModel.getId();
+		Cache cache = cacheManager.getCache(cacheName);
+		return cache;
+	}
+
+	/**
+	 * Shut down the EH Cache CacheManager.
+	 */
+	public void finalize() {
+		if (cacheManager != null) {
+			cacheManager.shutdown();
+		}
+	}
+	
+	private Object getKey(Object key){
+		/**
+		 * 可能存在多数据源，不同数据源的缓存不同
+		 */
+		if(StringUtil.isEmpty(DBUtil.getTargetDataSource())){
+			return String.valueOf(key.hashCode());
+		}else {
+			return String.valueOf(key.hashCode()) + "_" + DBUtil.getTargetDataSource();
+		}
+	}
+
+}

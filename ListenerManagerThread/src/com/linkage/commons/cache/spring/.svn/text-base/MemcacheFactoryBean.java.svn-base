@@ -1,0 +1,62 @@
+package com.linkage.bss.commons.cache.spring;
+
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.InitializingBean;
+
+import com.alisoft.xplatform.asf.cache.ICacheManager;
+import com.alisoft.xplatform.asf.cache.IMemcachedCache;
+import com.linkage.bss.commons.util.Log;
+
+/**
+ * 把alisoft的memcache实现封装为spring的FactoryBean代理,可以在spring中配置管理
+
+ * 1,在spring中配置memcache的示例，请查看test.unit目录下本package下的bss-common-memcache-demo.xml
+ * 2,在代码中使用此memcache请查看test.unit目录下本packeage下的Demo.java
+ * @author zhaoxin
+ *
+ */
+public class MemcacheFactoryBean implements FactoryBean, BeanNameAware,
+		InitializingBean {
+
+	protected final static Log logger = Log.getLog(MemcacheFactoryBean.class);
+
+	private ICacheManager<IMemcachedCache> cacheManager;
+	private String cacheName;
+	private String beanName;
+	private IMemcachedCache cache;
+
+	public void setCacheManager(ICacheManager<IMemcachedCache> cacheManager) {
+		this.cacheManager = cacheManager;
+	}
+
+	public void setCacheName(String cacheName) {
+		this.cacheName = cacheName;
+	}
+
+	public Object getObject() throws Exception {
+		return cache;
+	}
+
+	public Class getObjectType() {
+		return this.cache.getClass();
+	}
+
+	public boolean isSingleton() {
+		return true;
+	}
+
+	public void afterPropertiesSet() throws Exception {
+		//没有配置，就用beanName来做为cache的名称
+
+		if (this.cacheName == null) {
+			this.cacheName = this.beanName;
+		}
+		cache = cacheManager.getCache(cacheName);
+	}
+
+	public void setBeanName(String name) {
+		this.beanName = name;
+		
+	}
+}

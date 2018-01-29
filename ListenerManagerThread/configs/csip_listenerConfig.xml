@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listeners>
+	<listener name="WorkFlowAlarmThread" 
+		class="com.linkage.demo.thread.WorkFlowAlarmThread" 
+		threadCount="2" 
+		waitTime="5"
+		description="监控消息侦听(WorkFlowAlarmThread)" >
+	</listener>
+</listeners>

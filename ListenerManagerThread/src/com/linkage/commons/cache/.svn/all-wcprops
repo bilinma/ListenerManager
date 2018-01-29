@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/cache
+END
+EhCacheImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/cache/EhCacheImpl.java
+END
+ICache.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/cache/ICache.java
+END
+AliMemcacheCacheImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/cache/AliMemcacheCacheImpl.java
+END
+MemoryCacheImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/cache/MemoryCacheImpl.java
+END
