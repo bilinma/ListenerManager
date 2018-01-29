@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/cache/manager
+END
+JavaCacheManagerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/cache/manager/JavaCacheManagerImpl.java
+END
+ICacheMonitor.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/cache/manager/ICacheMonitor.java
+END
+ICacheManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/cache/manager/ICacheManager.java
+END
+IbatisCacheManagerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/cache/manager/IbatisCacheManagerImpl.java
+END
+CacheMonitorImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/cache/manager/CacheMonitorImpl.java
+END
+bss_cache_version.sql
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/cache/manager/bss_cache_version.sql
+END

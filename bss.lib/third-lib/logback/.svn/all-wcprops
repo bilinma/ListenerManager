@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Intf-bo/!svn/ver/1/SDBSS3.0_JKWork/bss.lib/third-lib/logback
+END
+logback-classic-0.9.16.jar
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Intf-bo/!svn/ver/1/SDBSS3.0_JKWork/bss.lib/third-lib/logback/logback-classic-0.9.16.jar
+END
+janino.jar
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Intf-bo/!svn/ver/1/SDBSS3.0_JKWork/bss.lib/third-lib/logback/janino.jar
+END
+slf4j-api-1.5.8.jar
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Intf-bo/!svn/ver/1/SDBSS3.0_JKWork/bss.lib/third-lib/logback/slf4j-api-1.5.8.jar
+END
+logback-core-0.9.16.jar
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Intf-bo/!svn/ver/1/SDBSS3.0_JKWork/bss.lib/third-lib/logback/logback-core-0.9.16.jar
+END

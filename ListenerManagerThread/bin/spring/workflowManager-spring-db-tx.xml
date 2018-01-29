@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+       					http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<bean id="orderPropertyConfigurer"
+		class="com.linkage.commons.spring.BssPropertiesConfigure">
+		<property name="order" value="1" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:jsbss.properties</value>
+			</list>
+		</property>
+		<property name="key" value="i am key,let me encrypt you! 1234haha"/>
+	</bean>
+
+
+
+	<bean id="orderManager.txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="csipManager.dataSource"></property>
+	</bean>
+
+	<tx:advice id="orderManager.smo.txAdvice" transaction-manager="orderManager.txManager">
+		<tx:attributes>
+			<tx:method name="tx_*" rollback-for="Exception"/>
+			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<tx:advice id="orderManager.bmo.txAdvice" transaction-manager="orderManager.txManager">
+		<tx:attributes>
+			<tx:method name="tx_*" rollback-for="Exception"/>
+			<tx:method name="txn_*" propagation="REQUIRES_NEW" rollback-for="Exception"/>
+			<tx:method name="insert*" rollback-for="Exception"/>
+			<tx:method name="update*" rollback-for="Exception"/>
+			<tx:method name="add*" rollback-for="Exception"/>
+			<tx:method name="del*" rollback-for="Exception"/>
+			<tx:method name="save*" rollback-for="Exception"/>
+			<tx:method name="modify*" rollback-for="Exception"/>
+			<tx:method name="notify*" rollback-for="Exception"/>
+			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:advisor advice-ref="orderManager.smo.txAdvice"
+			pointcut="execution(* com.linkage.bss.crm.order..*SMOImpl.*(..))" />
+		<aop:advisor advice-ref="orderManager.bmo.txAdvice"
+			pointcut="execution(* com.linkage.bss.crm.order..*BMOImpl.*(..))" />
+	</aop:config>
+</beans>

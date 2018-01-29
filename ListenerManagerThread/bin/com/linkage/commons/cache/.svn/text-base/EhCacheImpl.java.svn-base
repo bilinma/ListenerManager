@@ -1,0 +1,99 @@
+package com.linkage.bss.commons.cache;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
+
+import net.sf.ehcache.Ehcache;
+import net.sf.ehcache.Element;
+
+/**
+ * bss共用模块对Ecache 的封装
+
+ * ehCache 的使用请参考:本工程test.unit目录下的Demo.java以及
+ * @author zhaoxin
+ *
+ */
+public class EhCacheImpl implements ICache<Object, Object> {
+
+	private Ehcache cache;
+
+	public Ehcache getCache() {
+		return cache;
+	}
+
+	public void setCache(Ehcache cache) {
+		this.cache = cache;
+	}
+
+	public boolean clear() {
+		cache.removeAll();
+		return true;
+	}
+
+	public boolean containsKey(Object key) {
+		//isKeyInCache只能判断key是否在cache中存在,不能判断key是否已经过期了,故而采用getValue是否为null来判断key是否存在
+		//注释掉 return cache.isKeyInCache(key);
+		return this.cache.get(key) != null;
+	}
+
+	public void destroy() {
+		cache.removeAll();
+		cache = null;
+
+	}
+
+	public Object get(Object key) {
+		Element element = cache.get(key);
+		if (element != null)
+			return element.getValue();
+		return null;
+	}
+
+	public Set<Object> keySet() {
+		Set<Object> set = new CopyOnWriteArraySet<Object>();
+		set.addAll(cache.getKeys());
+		return set;
+	}
+
+	public Object put(Object key, Object value, Date expiry) {
+
+		return put(key, value);
+	}
+
+	public Object put(Object key, Object value, int timeout) {
+		return put(key, value);
+	}
+
+	public Object put(Object key, Object value) {
+		Element element = new Element(key, value);
+		cache.put(element);
+		return value;
+	}
+
+	public Object remove(Object key) {
+		return cache.remove(key);
+	}
+
+	public int size() {
+		return cache.getSize();
+	}
+
+	public Collection<Object> values() {
+		List<Object> list = new ArrayList<Object>();
+		List keys = cache.getKeys();
+		for (Iterator<Object> iter = keys.iterator(); iter.hasNext();) {
+			Serializable key = (Serializable) iter.next();
+			Element element = cache.get(key);
+			if (element != null) {
+				list.add(element.getObjectValue());
+			}
+		}
+		return list;
+	}
+}

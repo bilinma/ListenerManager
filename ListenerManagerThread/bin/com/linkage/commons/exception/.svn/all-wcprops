@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/exception
+END
+DaoException.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/exception/DaoException.java
+END
+BssRuntimeException.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/exception/BssRuntimeException.java
+END
+BmoException.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/exception/BmoException.java
+END
+BssCheckedException.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/exception/BssCheckedException.java
+END
+SmoException.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/exception/SmoException.java
+END
+Result.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/BSS3.0_DYZ/!svn/ver/21/trunk/BSS/bssCommons/src/com/linkage/bss/commons/exception/Result.java
+END

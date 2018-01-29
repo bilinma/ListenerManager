@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+	<import resource="workflowManager-spring-all.xml"/>
+	
+
+	<!-- 本机开发，使用c3p0的数据源配置，发布到应用，使用jndi的数据源配置 -->
+    <import resource="workflowManager-spring-db-c3p0.xml" />
+    <!-- <import resource="workflowManagerr-spring-db-jndi.xml"/>   -->
+
+</beans>

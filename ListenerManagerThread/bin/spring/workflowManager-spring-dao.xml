@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="csipManager.sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="csipManager.dataSource" />
+		<property name="configLocation" value="classpath:ibatis/usbSqlMapConfig.xml" />
+	</bean>
+	<bean id="csipManager.sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient" ref="csipManager.sqlMapClient" />
+	</bean>
+	
+	<bean id="workflowManager.workFlowAlarmDao" class="com.linkage.demo.dao.WorkFlowAlarmDaoImpl">
+		<property name="sqlMapClientTemplate" ref="csipManager.sqlMapClientTemplate" />
+	</bean>
+	
+</beans>

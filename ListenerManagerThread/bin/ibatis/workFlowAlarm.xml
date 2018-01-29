@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="workFlowAlarm">
+	<parameterMap class="java.util.HashMap" id="inParam">
+		<parameter property="inXml"  jdbcType="CLOB" javaType="java.lang.String" mode="IN" />
+		<parameter property="outXml"  jdbcType="CLOB" javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="callModifyXmlInfo" parameterMap="inParam">
+	  	{call crm.CRM_FOR_SPNEW.ModifyXmlInfo4Sp(?,?)}
+	</procedure>
+</sqlMap>

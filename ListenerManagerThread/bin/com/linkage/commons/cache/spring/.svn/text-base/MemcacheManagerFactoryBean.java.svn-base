@@ -1,0 +1,67 @@
+package com.linkage.bss.commons.cache.spring;
+
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.InitializingBean;
+
+import com.alisoft.xplatform.asf.cache.ICacheManager;
+import com.alisoft.xplatform.asf.cache.IMemcachedCache;
+import com.alisoft.xplatform.asf.cache.memcached.CacheUtil;
+import com.alisoft.xplatform.asf.cache.memcached.MemcachedCacheManager;
+import com.linkage.bss.commons.util.Log;
+
+/**
+ * 采用spring的FactoryBean封装的alisoft的memcache客户端的Manager管理器
+
+ * 负责对memcache客户端进行启动、停止等操作
+ * 在spring中的配置方法示例:
+ * 1,在spring中配置的示例，请查看test.unit目录下本package下的bss-common-memcache-demo.xml
+ * 2,在代码中使用此请查看test.unit目录下本packeage下的Demo.java
+ * 3,configFile属性如果没有配置，则默认为classpath路径下的memcached.xml文件
+ * 4,memcached.xml如果配置，请参考该项目的网址:http://code.google.com/p/memcache-client-forjava/
+ * 
+ * @author zhaoxin
+ * 
+ */
+public class MemcacheManagerFactoryBean implements FactoryBean,
+		InitializingBean, DisposableBean {
+
+	protected static final Log logger = Log
+			.getLog(MemcacheManagerFactoryBean.class);
+
+	private ICacheManager<IMemcachedCache> cacheManager;
+	private String configFile;
+
+	public String getConfigFile() {
+		return configFile;
+	}
+
+	public void setConfigFile(String configFile) {
+		this.configFile = configFile;
+	}
+
+	public Object getObject() throws Exception {
+		return cacheManager;
+	}
+
+	public Class getObjectType() {
+		return this.cacheManager.getClass();
+	}
+
+	public boolean isSingleton() {
+		return true;
+	}
+
+	public void afterPropertiesSet() throws Exception {
+		logger.info("Initializing Memcached CacheManager");
+		cacheManager = CacheUtil.getCacheManager(IMemcachedCache.class,
+				MemcachedCacheManager.class.getName());
+		cacheManager.setConfigFile(getConfigFile());
+		cacheManager.start();
+	}
+
+	public void destroy() throws Exception {
+		logger.info("Shutting down Memcached CacheManager");
+		cacheManager.stop();
+	}
+}
